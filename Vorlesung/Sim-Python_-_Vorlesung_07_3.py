@@ -2,13 +2,13 @@
 #               WiSe 2324 - Simulation technischer Systeme mit Python
 #                               Vorlesung 05
 #
-#_______________________________________________________________________
+# _______________________________________________________________________
 import numpy as np
 import scipy as sc
 import matplotlib.pyplot  as plt
 from matplotlib.ticker import MultipleLocator
 import pytest
-#-----------------------
+# -----------------------
 import os
 import csv
 import sys
@@ -19,13 +19,13 @@ import time
 from copy import copy
 
 from sympy import true
-#-----------------------
-os.system('clear')
+# -----------------------
+#os.system('clear')
 os.system('cls')
 print("\n\n\n")
-#======================================== Teil 01 =================================
+# ======================================== Teil 01 =================================
 print(f'\n\n=====================\n||     Thema 1     ||\n=====================\n')
-#==================================================================================
+# ==================================================================================
 class Hole:
     # Initial class-attribute:
     name = 'Hole'

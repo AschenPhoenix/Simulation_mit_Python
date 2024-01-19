@@ -28,10 +28,28 @@ print("\n\n\n")
 # ======================================== Teil 00 =================================
 print(f'\n\n=====================\n||   Aufgabe 1.0   ||\n=====================\n')
 # ==================================================================================
-class HoleDetection
-    def __init__(self):
+class HoleDetection:
+    """
+        Hole describes a general hole
+        """
 
+    name = 'Hole'
+    class_counter = 0
+
+    def __init__(self):
+        """
+                Initialising an instance of the class hole sets the centre point of the hole at the coordinates (0/0)
+                """
+        Hole.class_counter += 1
+        self._centre_point = (0, 0)
+    @property
+    def (self):
+        return 
+    
+    @.setter
+    def (self, value):
+        pass
 def test_hole_detection():
     pass
 # ========================== Ende =======================================
-print("\n\n")1
+print("\n\n")
