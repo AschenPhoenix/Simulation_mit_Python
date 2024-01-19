@@ -1,3 +1,10 @@
+"""
+Module description
+@date: Mai 2020
+@author: Hendrik Traub <h.traub@tu-bs.de>
+@Copyright: 2020 TU Braunschweig
+<www.tu-braunschweig.de>. All rights reserved.
+"""
 #
 #               WiSe 2324 - Simulation technischer Systeme mit Python
 #                               Übung 04
@@ -7,20 +14,18 @@ import numpy as np
 import scipy as sc
 import matplotlib.pyplot  as plt
 from matplotlib.ticker import MultipleLocator
-#-----------------------
-import os
-import csv
-import sys
 import serial
-from datetime import datetime
-import _thread as thread
-import time
-
 from sympy import true
 from mpl_toolkits.mplot3d import axes3d
 from matplotlib import cm
 #-----------------------
-os.system('clear')
+import os
+import csv
+import sys
+from datetime import datetime
+import _thread as thread
+import time
+#-----------------------
 os.system('cls')
 print("\n\n\n")
 #======================================== Teil 00 =================================
@@ -187,7 +192,7 @@ for i in D:
     k+=1
 plt.xlabel(r'Frequenzverhaeltnis $\eta$')
 plt.ylabel(r'Vergroe$\ss$erungsfunktion V')
-plt.title(f'Verlauf der Vergroe$\ss$erungsfunktion V für verschiedene Werte des Dämpfungsmaßes D')
+plt.title(r'Verlauf der Vergroe$\ss$erungsfunktion V für verschiedene Werte des Dämpfungsmaßes D')
 plt.grid()
 plt.legend()
 plt.show()
