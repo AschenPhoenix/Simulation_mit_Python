@@ -40,11 +40,12 @@ x_min = -5
 x_max = 3
 x = np.linspace(x_min, x_max, 200)
 y = np.polyval(polynom1, x)
+
 plt.plot(x, y, 'r', label='Polynom 1', linewidth=2)
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.grid()
-plt.legend('best')
+plt.legend(loc='best')
 plt.show()
 
 # ======================================== Teil 02 =================================
