@@ -6,7 +6,7 @@
 import numpy as np
 import scipy as sc
 from math import *
-import matplotlib.pyplot  as plt
+import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 #-----------------------
 import os

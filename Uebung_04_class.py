@@ -21,7 +21,6 @@ from sympy import true
 # import opencv as cv2
 # -----------------------
 import Uebung_04_testfunk
-
 # -----------------------
 # os.system('clear')
 os.system('cls')
