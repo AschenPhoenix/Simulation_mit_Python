@@ -2,7 +2,7 @@
 #               WiSe 2324 - Simulation technischer Systeme mit Python
 #                               Übung 05
 #
-#_______________________________________________________________________
+# _______________________________________________________________________
 import numpy as np
 import scipy as sc
 import matplotlib.pyplot as plt
@@ -26,10 +26,14 @@ from Uebung_04_class import HoleDetection
 os.system('cls')
 print("\n\n\n")
 
+
 def test_holedetection():
-    hole_detection = HoleDetection(filename='holes.JPG', filepath='../Uebung/')
+    hole_detection = HoleDetection(filename='holes.JPG', filepath='..')
     variable_type = type(hole_detection)
-    print(variable_type)
+    # print(hole_detection)
+    # print(variable_type)
+    # print('\n\n\n\n\n')
     pass
+
 
 test_holedetection()
