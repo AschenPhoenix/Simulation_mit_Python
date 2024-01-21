@@ -7,7 +7,7 @@
 #########################################################################################
 # |==============| Bibliotheken |==============|
 #                     region
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 
 # |~~~~~~~~~~~~| Main Bibliotheken |~~~~~~~~~~~|
 import numpy as np
@@ -19,7 +19,7 @@ from matplotlib.ticker import MultipleLocator
 from mpl_toolkits.mplot3d import axes3d
 from matplotlib import cm
 import pytest
-#
+
 # |~~~~~~~~~~| Weitere Bibliotheken |~~~~~~~~~~|
 import os
 import csv
@@ -34,21 +34,23 @@ from copy import copy
 from sympy import true
 from scipy.interpolate import interp1d
 # import opencv as cv2
-#
+
 # |~~~~~~~~~~| Terminal vorbereiten |~~~~~~~~~~|
 # os.system('clear')
 # os.system('cls')
-mplt.use('Qt5Agg')
-#
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
 
 # |=======| Import aus anderer Dateien |=======|
 #                    region
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 # import
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
+
+# |=========| Plot separat anzeigen |==========|
+mplt.use('Qt5Agg')
+#########################################################################################
 
 # ======================================= nächster Teil =================================
 print(f'\n\n=====================\n||  Thema / Aufgabe 0.0  ||\n=====================\n')

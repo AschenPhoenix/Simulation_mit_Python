@@ -7,7 +7,7 @@
 #########################################################################################
 # |==============| Bibliotheken |==============|
 #                     region
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 
 # |~~~~~~~~~~~~| Main Bibliotheken |~~~~~~~~~~~|
 import numpy as np
@@ -19,7 +19,7 @@ from matplotlib.ticker import MultipleLocator
 from mpl_toolkits.mplot3d import axes3d
 from matplotlib import cm
 import pytest
-#
+
 # |~~~~~~~~~~| Weitere Bibliotheken |~~~~~~~~~~|
 import os
 import csv
@@ -34,21 +34,23 @@ from copy import copy
 from sympy import true
 from scipy.interpolate import interp1d
 # import opencv as cv2
-#
+
 # |~~~~~~~~~~| Terminal vorbereiten |~~~~~~~~~~|
 # os.system('clear')
 # os.system('cls')
-mplt.use('Qt5Agg')
-#
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
 
 # |=======| Import aus anderer Dateien |=======|
 #                    region
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 # import
-# |____________________________________________|
+# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
+
+# |=========| Plot separat anzeigen |==========|
+mplt.use('Qt5Agg')
+#########################################################################################
 
 # ======================================= nächster Teil =================================
 print(f'\n\n=====================\n||  Thema / Aufgabe 1.0  ||\n=====================\n')
@@ -116,17 +118,23 @@ print(f'\n\n=======================\n||   Bsp Aufgabe 1   ||\n==================
 x = np.linspace(0, 5,  200)
 y = np.polyval([2, 0, 0], x)
 
+# Daten erzeugen
 # Fehler e: S = y + e
 mu = 0
 sigma = 1
-print(y.shape)
+print('Print y.shape:', y.shape)
 e = sigma * np.random.randn(y.shape[0])
-
 S = y + e
 
+# Data fitting
+p = np.polyfit(x, S, deg=3)
+print('Polyfit:', p)
+
+# Plot erzeugen
 plt.figure('verrauschte Signale')
 plt.plot(x, y, '--', label='reale Funktion')
 plt.plot(x, S, '+', label='Signal (verrauscht)')
+plt.plot(x , np.polyval(p, x), 'r--', label='fitting Funktion')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.grid()
