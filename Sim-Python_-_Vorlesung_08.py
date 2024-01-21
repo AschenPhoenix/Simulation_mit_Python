@@ -11,7 +11,7 @@
 
 # |~~~~~~~~~~~~| Main Bibliotheken |~~~~~~~~~~~|
 import numpy as np
-import math as mp
+import math as mth
 import scipy as sc
 import matplotlib.pyplot as plt
 import matplotlib as mplt
@@ -33,11 +33,11 @@ import openpyxl as opx
 from copy import copy
 from sympy import true
 from scipy.interpolate import interp1d
+import scipy.optimize as opt
 # import opencv as cv2
 
 # |~~~~~~~~~~| Terminal vorbereiten |~~~~~~~~~~|
-# os.system('clear')
-# os.system('cls')
+os.system('cls')
 # |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
 
@@ -49,7 +49,7 @@ from scipy.interpolate import interp1d
 #                   endregion
 
 # |=========| Plot separat anzeigen |==========|
-mplt.use('Qt5Agg')
+# mplt.use('Qt5Agg')
 #########################################################################################
 
 # ======================================= nächster Teil =================================
@@ -114,6 +114,7 @@ plt.show()
 # ======================================= nächster Teil =================================
 print(f'\n\n=======================\n||   Bsp Aufgabe 1   ||\n=======================\n')
 # =======================================================================================
+print(f'Fitting einer Kurve als Polynom')
 
 x = np.linspace(0, 5,  200)
 y = np.polyval([2, 0, 0], x)
@@ -121,20 +122,24 @@ y = np.polyval([2, 0, 0], x)
 # Daten erzeugen
 # Fehler e: S = y + e
 mu = 0
-sigma = 1
+sigma = 5   # Stärke das Rauschen
 print('Print y.shape:', y.shape)
 e = sigma * np.random.randn(y.shape[0])
 S = y + e
 
 # Data fitting
-p = np.polyfit(x, S, deg=3)
-print('Polyfit:', p)
+p_info = np.polyfit(x, S, deg=2, full=True)
+p = p_info[0]
+# p = np.polyfit(x, S, deg=3)
+print(f'Polyfit:', p)
+print(f'Polyfit Info:', p_info)
+print(f'Summe der Fehler: {p_info[1]}')  # Zeigt, wie Nahe das Fitting an der originalkurve ist
 
 # Plot erzeugen
 plt.figure('verrauschte Signale')
-plt.plot(x, y, '--', label='reale Funktion')
+plt.plot(x, y, '--', label='reale Funktion', linewidth=2)
 plt.plot(x, S, '+', label='Signal (verrauscht)')
-plt.plot(x , np.polyval(p, x), 'r--', label='fitting Funktion')
+plt.plot(x , np.polyval(p, x), 'r', label='fitting Funktion', linewidth=2)
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.grid()
@@ -142,7 +147,50 @@ plt.legend(loc='best')
 plt.title('Reales und verrauschtes Signal')
 plt.show()
 
+
+# ======================================= nächster Teil =================================
+print(f'\n\n=======================\n||   Bsp Aufgabe 2   ||\n=======================\n')
+# =======================================================================================
+print(f'Fitting einer beliebigen Funktion')
+
+
+def bsp_auf_2(x, a, b):
+    f = np.exp(-1*((x-a)**2/2)/(2*b**2))
+    # print(r'$e^( -1*((x-a)^2 / 2) / (2*b^2) )$')
+    return f
+
+
+x = np.linspace(-10, 10,  200)
+y = bsp_auf_2(x, 2, 1)
+
+# Daten erzeugen
+# Fehler e: S = y + e
+sigma = 0.1   # Stärke das Rauschen
+e = sigma * np.random.randn(y.shape[0])
+S = y + e
+
+# Data fitting
+para_opt, para_cov = opt.curve_fit(bsp_auf_2, x, S)
+print(f'Parameter Optimize: {para_opt}')
+print(f'Parameter Covariance: {para_cov}')
+print(f'Prozentuale Abschätzung des Fehlers 1ter Parameter: {round(((para_opt[0]/2)-1)*100, 5)} %')
+print(f'Prozentuale Abschätzung des Fehlers 2ter Parameter: {round(((para_opt[1]/1)-1)*100, 5)} %')
+
+# Plot erzeugen
+plt.figure('verrauschte Signale')
+plt.plot(x, y, '--', label='reale Funktion', linewidth=2)
+plt.plot(x, S, '+', label='Signal (verrauscht)')
+plt.plot(x , bsp_auf_2(x, para_opt[0], para_opt[1]), 'r', label='fitting Funktion', linewidth=2)
+
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.grid()
+plt.legend(loc='best')
+plt.title('Reales und verrauschtes Signal')
+plt.show()
+
+print(f"Vorlesung`s Video weiter bei 01:10:00")
 # ========================== Ende =======================================
 print("\n\n")
 # =======================================================================
-# print (f'Vorlesung's Video weiter bei Minute 30')
+# print (f'Vorlesung's Video weiter bei 00:00:00')

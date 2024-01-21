@@ -11,7 +11,7 @@
 
 # |~~~~~~~~~~~~| Main Bibliotheken |~~~~~~~~~~~|
 import numpy as np
-import math as mp
+import math as mth
 import scipy as sc
 import matplotlib.pyplot as plt
 import matplotlib as mplt
@@ -33,11 +33,11 @@ import openpyxl as opx
 from copy import copy
 from sympy import true
 from scipy.interpolate import interp1d
+import scipy.optimize as opt
 # import opencv as cv2
 
 # |~~~~~~~~~~| Terminal vorbereiten |~~~~~~~~~~|
-# os.system('clear')
-# os.system('cls')
+os.system('cls')
 # |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
 
@@ -64,4 +64,4 @@ print(f'\n\n=======================\n||   Bsp Aufgabe 1   ||\n==================
 # ======================================== Ende =========================================
 print("                                    \n\n                                        ")
 # =======================================================================================
-# print (f'Vorlesung's Video weiter bei Minute 30')
+# print (f'Vorlesung's Video weiter bei 00:00:00')
