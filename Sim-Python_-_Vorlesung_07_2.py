@@ -34,7 +34,7 @@ class Circle:
     def __init__(self, radius):
         '''
                              Magische Methode
-        - Enhällt alle Attribute der Klasse (guter Programmier Stil)
+        - Enthält alle Attribute der Klasse (guter Programming-Stil)
         - __init__ MUSS in jeder Klasse vorhanden sein
         '''
         # Initial protected attributes
