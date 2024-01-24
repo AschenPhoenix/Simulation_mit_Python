@@ -143,11 +143,30 @@ def versagen(dic):
 # ===================================================================
 
 
-def aus_gerade(dic):
+def e_modul(dic):
     span = dic["Zugspannung"]
     dehn = dic["Dehnung_1"]
-    slope, intercept = np.polyfit(dehn, span, 1)
-    return
+
+    # print(dehn)
+    bereich = []
+    le = len(dehn)
+
+    for i in range(le):
+        if dehn[i] >= 0.0005 and dehn[i] <= 0.0025:
+            bereich.append(i)
+    if not bereich:
+        bereich = [0,1,2]
+    # print(bereich)
+
+    de = []
+    sp = []
+    for j in bereich:
+        de.append(dehn[j])
+        sp.append(span[j])
+    # print(de,sp)
+
+    slope, intercept = np.polyfit(de, sp, 1)
+    return [slope, intercept]
 # ===================================================================
 
 
@@ -159,10 +178,14 @@ def main():
     Specimen_RawData_5 = load('5')
 
     datas = [Specimen_RawData_1, Specimen_RawData_2, Specimen_RawData_3, Specimen_RawData_4, Specimen_RawData_5]
-    data_names = ['Specimen_RawData_1', 'Specimen_RawData_2', 'Specimen_RawData_3', 'Specimen_RawData_4', 'Specimen_RawData_5']
-    # print(datas[0]['Zeit'])
-    print(datas[0]['Zeit'][1])
+    data_names = ['Specimen_RawData_1', 'Specimen_RawData_2', 'Specimen_RawData_3', 'Specimen_RawData_4',
+                  'Specimen_RawData_5']
 
+    for k in [0,1,2,3,4]:
+        datas[k]['E_Modul'] = e_modul(datas[k])
+        datas[k]['Versagenslast'] = versagen(datas[k])
+
+    # print(datas[0]['Zeit'][1])
 
     for i in [0,1,2,3,4]:
         print(data_names[i])
@@ -170,14 +193,19 @@ def main():
             print(key, ":", value, "\n")
         print('\n\n')
 
+    # ======================================
+
     print('\n\n===== Teilaufgabe 3 =====\n')
+    color = ['b', 'c', 'r', 'g', 'k']
+
     plt.figure('Uebung 5 - Aufgabe 2.3')
     plt.subplot(211)
-    plt.plot(Specimen_RawData_1["Traversenweg"], Specimen_RawData_1["Last"], color='b', label="Specimen_RawData_1", linewidth=2)
-    plt.plot(Specimen_RawData_2["Traversenweg"], Specimen_RawData_2["Last"], color='c', label="Specimen_RawData_2", linewidth=2)
-    plt.plot(Specimen_RawData_3["Traversenweg"], Specimen_RawData_3["Last"], color='r', label="Specimen_RawData_3", linewidth=2)
-    plt.plot(Specimen_RawData_4["Traversenweg"], Specimen_RawData_4["Last"], color='g', label="Specimen_RawData_4", linewidth=2)
-    plt.plot(Specimen_RawData_5["Traversenweg"], Specimen_RawData_5["Last"], color='k', label="Specimen_RawData_5", linewidth=2)
+    for k in [0,1,2,3,4]:
+        plt.plot(datas[k]["Traversenweg"], datas[k]["Last"], color=color[k], label=data_names[k], linewidth=2)
+
+    plt.subplot(212)
+    plt.hlines(datas[k]['Versagenslast'], -0.1, 0, color= color[k], linewidth=2)
+
 
     pass
 
