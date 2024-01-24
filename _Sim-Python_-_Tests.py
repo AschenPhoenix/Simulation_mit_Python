@@ -1,11 +1,7 @@
-print(ord('Z'))
-print(ord('A'))
-print(ord('$'))
-print(ord('X'))
-print()
-print(ord('X')+3-26)
-print(ord('Z')+3-26)
-print(ord('D'))
-print()
-print(ord(' '))
-print(ord('!'))
+def test():
+    a = [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]
+    del a[2]
+    return a
+
+a = test()
+print(a)
