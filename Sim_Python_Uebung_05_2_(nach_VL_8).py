@@ -195,7 +195,7 @@ def main():
 
     # ======================================
 
-    print('\n\n===== Teilaufgabe 3 =====\n')
+    print('\n\n===== Teilaufgabe 1 bis 3 =====\n')
     color = ['b', 'c', 'r', 'g', 'k']
 
     plt.figure('Uebung 5 - Aufgabe 2.3')
@@ -223,6 +223,8 @@ def main():
     plt.legend(loc='best')
     plt.show()
     pass
+
+
 main()
 # ======================================== Ende =========================================
 print("                                    \n\n                                        ")
