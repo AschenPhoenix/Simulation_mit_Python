@@ -198,30 +198,34 @@ def main():
     print('\n\n===== Teilaufgabe 1 bis 3 =====\n')
     color = ['b', 'c', 'r', 'g', 'k']
 
-    plt.figure('Uebung 5 - Aufgabe 2.3')
-    plt.subplot(211)
+    fig1 = plt.figure('Uebung 5 - Aufgabe 2.3')
     for k in [0,1,2,3,4]:
         plt.plot(datas[k]["Traversenweg"], datas[k]["Last"], color=color[k], label=data_names[k], linewidth=2)
         plt.hlines(datas[k]['Versagenslast'], -0.1, 0, color=color[k], linewidth=2, label='Versangenslast für '+data_names[k])
     plt.title('Kraft-Weg-Diagramm')
     plt.xlabel('Traversenweg in [mm]')
     plt.ylabel('Kraft in [kN]')
-    plt.legend(loc='best')
+    plt.grid()
+    plt.legend(loc='lower right')
+    fig1.tight_layout(pad=5.0)
 
-
-    plt.subplot(212)
+    fig2 = plt.figure()
     for k in [0, 1, 2, 3, 4]:
         plt.plot(datas[k]["Dehnung_1"], datas[k]["Zugspannung"], color=color[k], label=data_names[k], linewidth=2)
         x_max = min(datas[k]["Dehnung_1"]) + ((max(datas[k]["Zugspannung"]) - min(datas[k]["Zugspannung"]))/datas[k]["E_Modul"][0])
         x_min = min(datas[k]["Dehnung_1"])
         y_max = max(datas[k]["Zugspannung"])
         y_min = min(datas[k]["Zugspannung"])
-        plt.plot([x_min, x_max], [y_min, y_max], color=color[k], label='E-Modul von '+data_names[k], linewidth=2)
+        # plt2.plot([x_min, x_max], [y_min, y_max], color=color[k], label='E-Modul von '+data_names[k], linewidth=2)
     plt.title('Spannungs-Dehnungs-Diagramm')
     plt.xlabel('Dehnung in [%]')
     plt.ylabel('Spannung in [MPa]')
+    plt.grid()
     plt.legend(loc='best')
+
+    fig2.tight_layout(pad=5.0)
     plt.show()
+
     pass
 
 
