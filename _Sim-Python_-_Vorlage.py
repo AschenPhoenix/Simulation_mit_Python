@@ -33,6 +33,7 @@ import openpyxl as opx
 from copy import copy
 from sympy import true
 from scipy.interpolate import interp1d
+from scipy.integrate import solve_ivp
 import scipy.optimize as opt
 # import opencv as cv2
 
