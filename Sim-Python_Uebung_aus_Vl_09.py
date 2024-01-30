@@ -2,7 +2,7 @@
 #                                                                                       #
 #                                       WiSe 2324                                       #
 #                       Simulation technischer Systeme mit Python                       #
-#                                      Vorlesung 00                                     #
+#                                    Uebung aus VL 10                                   #
 #                                                                                       #
 #########################################################################################
 # |==============| Bibliotheken |==============|
@@ -54,11 +54,13 @@ os.system('cls')
 mplt.use('Qt5Agg')
 np.set_printoptions(suppress=True)
 #########################################################################################
+print(f'\n\n===== Duffing-Oszillator =====')
+print(f'Übungsaufgabe (Video ab 00:52:40), von mir noch NICHT bearbeitet!')
+print(f'Die Lösung dieser Aufgabe ist in VL12 bei 00:09:26 gezeigt.')
+# ======================================= nächster Teil =================================
+print(f'\n\n=====================||  Aufgabe: Duffing Oszillator  ||=====================\n')
+# =======================================================================================
 
-'''
-Erläuterung von lokalen und globalen Variablen, sowie wie man der solve_ivp funktion argumente 
-übergeben kann.
-'''
 
 
 # ======================================== Ende =========================================

@@ -212,6 +212,7 @@ print(f'\n\n===== elektrischer Schwingkreis =====')
 
 print(f'\n\n===== Duffing-Oszillator =====')
 print(f'Übungsaufgabe (Video ab 00:52:40), von mir noch NICHT bearbeitet!')
+print(f'Die Lösung dieser Aufgabe ist in VL12 bei 00:09:26 gezeigt.')
 
 # ======================================== Ende =========================================
 print("                                    \n\n                                        ")
