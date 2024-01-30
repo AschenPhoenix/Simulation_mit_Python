@@ -2,7 +2,7 @@
 #                                                                                       #
 #                                       WiSe 2324                                       #
 #                       Simulation technischer Systeme mit Python                       #
-#                                      Vorlesung 00                                     #
+#                                      Vorlesung 10                                     #
 #                                                                                       #
 #########################################################################################
 # |==============| Bibliotheken |==============|
@@ -162,6 +162,7 @@ for ti in np.linspace(0,t,int(t/dt)):
     fig.canvas.mpl_connect('close_event', handle_close)
 plt.show()
 
+print('Am Ende dieser Vorlesung gibt es noch eine Übung, die bearbeitet werden  und sollte!')
 # ======================================== Ende =========================================
 print("                                    \n\n                                        ")
 # =======================================================================================
