@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mplt
 from matplotlib.ticker import MultipleLocator
 from mpl_toolkits.mplot3d import axes3d
-from matplotlib import cm
+from matplotlib import colormaps as cm
 import pytest
 
 # |~~~~~~~~~~| Weitere Bibliotheken |~~~~~~~~~~|
@@ -150,12 +150,13 @@ wframe = None
 # u[i,j] = (1-(4*dt*D)/dx**2) * u0[i,j] +(dt*D)/dx**2 * (u0[i,j-1] + u0[i-1,j] + u0[i+1,j] + ue0[i,j+1])
 for ti in np.linspace(0,t,int(t/dt)):
     if wframe:
+        #ax.cla()
         ax.collections.remove(wframe)
         textvar.set_visible(False)
     for i in range(1, len(X)-1):
         for j in range(1, len(Y)-1):
             u[i,j] = (1-(4*dt*D)/h**2) * u0[i,j] + (dt*D)/h**2 * (u0[i,j-1] + u0[i-1,j] + u0[i+1,j] + u0[i,j+1])
-    wframe = ax.plot_surface(X, Y, u, cmap=cm.jet)
+    wframe = ax.plot_surface(X, Y, u)  #, cmap=cm.jet) , cma p=cm.coolwarm)
     textvar = ax.text(0, 10,  200, f't={ti:.4}s')
     u0 = u.copy()
     plt.pause(0.1)
