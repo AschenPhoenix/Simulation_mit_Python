@@ -110,3 +110,35 @@ textsuche2()
 
 
 print('\n\n\n', '\t\t\t Aufgabe 4.5', '\n')
+cryptList = ['die', 'ist', 'Auf', 'ist', 'und', 'wichtigen', 'einem', 'Quelltext', 'für', 'objektorientierten','abstrakten', 'und', 'zusätzliche', 'Anwendungsentwicklung', 'und', 'sowie','Skripte', 'Programmierung.', 'in', 'Programmiersprache', 'der', 'sowohl', 'mächtige','auf', 'für', 'binärer', 'umfangreiche', 'aber', 'Form', 'aber', 'Achtung!', 'einfach', 'eine','Syntax', 'als', 'tolle', 'gleichen', 'und', 'die', 'Sei te', 'für', 'mit', 'http://www.python.org','freie', 'elegante', 'Der', 'geeignet.', 'sind', 'Development)', 'auch', 'effizienten', 'von', 'Application','Verweise', 'alle', 'Sprache', 'Standardbibliothek', 'Werkzeuge,', 'Distributionen','finden', 'schnelle', 'und', 'als', 'weiterverbreitet', 'hervorragend', 'Typisierung','(Rapid', 'Drittanbietern,', 'Geheim!', 'auf', 'Ansatz', 'und', 'frei', 'Programme', 'verfügbar,','werden.', 'Python', 'Module,', 'Python', 'einfachen,', 'als', 'dynamische', 'frei', 'die','Dokumentation.', 'lernende,', 'Webseite', 'Python-Interpreter', 'zu', 'interpretierte','können', 'zur', 'der', 'sich', 'Plattformen', 'weitere', 'effektiven', 'Durch', 'Datenstrukturen']
+key=[30, 68, 78, 3, 32, 35, 19]
+
+code = ' '
+for i in key:
+    code += cryptList[i] + ' '
+print(code)
+
+print('\n\n\n', '\t\t\t Aufgabe 4.6', '\n')
+f=[0, 1]
+for i in range(2,100):
+    f.append(f[i-1]+f[i-2])
+plt.loglog(f)
+plt.show()
+
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 5.1', '\n')
+counter = 0
+while counter < 3:
+    print("Anweisung 1")
+    counter = counter + 1
+else: print("Anweisung 2")
+
+
+print('\n\n\n', '\t\t\t Aufgabe 5.5', '\n')
+
+
+
+
+
+
+#
