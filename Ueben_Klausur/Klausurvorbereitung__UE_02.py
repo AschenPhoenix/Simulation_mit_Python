@@ -93,19 +93,70 @@ print(liste)
 
 
 #########################################################################################
-print('\n\n\n', '\t\t\t Aufgabe 5.0', '\n')
+print('\n\n\n', '\t\t\t Aufgabe 8.0', '\n')
+liste = []
+for i in range(100):
+    liste.append(random.randint(0,10))
+tuple1=tuple(liste)
+zahl1 = input('Welche Zahl soll gezählt werden? ')
+anzahl = tuple1.count(int(zahl1))
+
+print("Die Zahl %i tritt insgesamt %i mal auf." % (int(zahl1),anzahl))
+print(f"Die Zahl {zahl1} tritt insgesamt {anzahl} mal auf.")
 
 
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 9.0', '\n')
+wiederholen=True
+x = 0
+while wiederholen:
+    x=np.random.randint(1,6)
+    print(f'\nDu hast eine  {x}  gewürfelt\n')
+    wiederholen=bool(input(f'Willst  du nochmal würfen?  (Antwort: ja, nein)\n\t'))
+    if wiederholen != 'ja': break
 
 
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 10.0', '\n')
+filename = "MeineDaten.xlsx"
+file = opx.load_workbook(filename)
+data = file['Tabelle1']
+l = len(data['A'])
+
+Daten = {data['A1'].value: [], data['B1'].value: [], data['C1'].value: []}
+for i in range(2,l):
+    Daten[data['A1'].value].append(float(data['A' + str(i)].value))
+    Daten[data['B1'].value].append(float(data['B' + str(i)].value))
+    Daten[data['C1'].value].append(float(data['C' + str(i)].value))
+for key, value in Daten.items():
+    print(key, f":\t", value)
+file.close()
 
 
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 11.0', '\n')
+t = Daten['Zeit']
+y= np.sin(t)**2
+y=y.tolist()
+print(f't = {t}')
+print(f'y = {y}')
+plt.plot(t,y)
+plt.show()
+
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 13.1', '\n')
 
 
+print('\n\n\n', '\t\t\t Aufgabe 13.2', '\n')
 
 
+print('\n\n\n', '\t\t\t Aufgabe 13.3', '\n')
 
 
+print('\n\n\n', '\t\t\t Aufgabe 13.4', '\n')
+
+
+print('\n\n\n', '\t\t\t Aufgabe 13.5', '\n')
 
 
 
