@@ -211,6 +211,7 @@ Z=np.exp(-(X**2+Y**2))
 fig=plt.figure('3D Plotten')
 Zeilen=3
 Spalten=3
+plt.tight_layout(pad=1)
 
 ax =fig.add_subplot(3,3,3, projection='3d')
 ax.plot_surface(X,Y,Z, cmap=cm.jet, label='3D Gauss')

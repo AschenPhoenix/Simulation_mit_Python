@@ -50,7 +50,7 @@ os.system('cls')
 #                   endregion
 
 # |=======| Darstellungseinstellungen |========|
-mplt.use('Qt5Agg')
+#mplt.use('Qt5Agg')
 np.set_printoptions(suppress=True)
 #########################################################################################
 
