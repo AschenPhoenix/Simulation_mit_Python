@@ -145,18 +145,88 @@ plt.show()
 
 #########################################################################################
 print('\n\n\n', '\t\t\t Aufgabe 13.1', '\n')
-
+def Polynom(x,a=1,b=1,c=00):
+    f=a*x**2+b*x+c
+    return f
 
 print('\n\n\n', '\t\t\t Aufgabe 13.2', '\n')
-
+x=np.arange(0,10.2,0.2)
+y=Polynom(x,2,-10,4)
+plt.plot(x,y)
+#plt.show()
 
 print('\n\n\n', '\t\t\t Aufgabe 13.3', '\n')
 
 
 print('\n\n\n', '\t\t\t Aufgabe 13.4', '\n')
-
+def PolyDiff(x,y):
+    ydiff=[]
+    for i in range(1,len(x)-1):
+        ydiff.append((y[i+1]-y[i-1])/(2*(x[i+1]-x[i])))
+    return ydiff
 
 print('\n\n\n', '\t\t\t Aufgabe 13.5', '\n')
+plt.plot(x[1:-1],PolyDiff(x,y))
+plt.show()
 
 
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 14.0', '\n')
 
+def someFunc(f1,f2,f3):
+    summe = f1+f2+f3
+    produkt = f1*f2*f3
+    maximal = max([f1,f2,f3])
+    minimal = min([f1,f2,f3])
+    return summe,produkt,[maximal,minimal]
+
+fsum, fprod, fmaxima = someFunc(5,6,7)
+print(f'fsum={fsum}, fprod={fprod}, fmaxima={fmaxima}')
+
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 15.0', '\n')
+def data_to_dic(datanamelist):
+    folderpath=r'C:\Users\User\OneDrive\Uni und Verbindung\Uni und aktuelles Semester\Aktuelles Semester\WiSe 2324 - Simulation technischer Systeme mit Python\Eigene Programme\Simulation_mit_Python\Ueben_Klausur'
+    l=len(datanamelist)
+
+    dic = dict()
+
+    for n in range(l):
+        datapath = folderpath+'\\'+datanamelist[n]
+        datafile = open(datapath,'r')
+        data = []
+        for line in datafile:
+            data.append(line)
+        datafile.close()
+
+        ''' editieren der daten'''
+        datatitle = []
+        datatime = []
+        datavalue = []
+
+        datatitle = str(data[0])
+        datatime = data[1].split(' ')
+        datatime[0] = datatime[0].replace('\n', '')
+        datatime[1] = datatime[1].replace('-',',')
+        datatime[1] = datatime[1].replace('\n','')
+
+        datavalue = data[2].split(' ')
+        datavalue[0] = datavalue[0].replace('\n', '')
+        datavalue[1] = datavalue[1].replace(',', '.')
+        datavalue[1] = datavalue[1].replace('-', ',')
+        datavalue[1] = datavalue[1].replace('\n','')
+
+        ''' Speichern der Daten'''
+        dic[datatitle] = {str(datatime[0]): list(map(float, datatime[1].split(','))),
+                          str(datavalue[0]): list(map(float, datavalue[1].split(',')))}
+        print(f'Datei {n} complett')
+    print(' ')
+    return dic
+
+datalist = ['data_export.txt','data_export2.txt']
+daten = data_to_dic(datalist)
+for key1, value1 in daten.items():
+    print(key1.replace('\n', ''))
+    for key2, value2 in value1.items():
+        print(f" \t", key2, f":\t", value2)
+    print('  ')
