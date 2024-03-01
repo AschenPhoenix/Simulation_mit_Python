@@ -219,7 +219,7 @@ def data_to_dic(datanamelist):
         ''' Speichern der Daten'''
         dic[datatitle] = {str(datatime[0]): list(map(float, datatime[1].split(','))),
                           str(datavalue[0]): list(map(float, datavalue[1].split(',')))}
-        print(f'Datei {n} complett')
+        print(f'Datei {n+1} complett')
     print(' ')
     return dic
 
@@ -230,3 +230,7 @@ for key1, value1 in daten.items():
     for key2, value2 in value1.items():
         print(f" \t", key2, f":\t", value2)
     print('  ')
+
+
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 16.0', '\n')

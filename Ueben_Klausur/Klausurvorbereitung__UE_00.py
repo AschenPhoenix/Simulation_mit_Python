@@ -46,6 +46,8 @@ os.system('cls')
 # |=======| Darstellungseinstellungen |========|
 mplt.use('Qt5Agg')
 np.set_printoptions(suppress=True)
+#plt.tight_layout(pad=0.5)
+
 #########################################################################################
 print('\n\n\n', '\t\t\t Aufgabe 0.0', '\n')
 
