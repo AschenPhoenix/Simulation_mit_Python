@@ -140,20 +140,106 @@ funk_pruefen(A,b)
 
 
 #########################################################################################
-print('\n\n\n', '\t\t\t Aufgabe 1.0', '\n')
+print('\n\n\n', '\t\t\t Aufgabe 0.0', '\n')
 x = np.array([0,1,2,3,4,5])
 x2 = np.linspace(0,5,100)
 F = np.array([0,940,1554,2069,2438,2509])
 
+p_lin=np.polyfit(x,F,1)
+p_quad=np.polyfit(x,F,2)
+
+y_lin=np.polyval(p_lin,x2)
+y_quad=np.polyval(p_quad,x2)
+y_35mm=y=np.polyval(p_quad,3.5)
+
+plt.figure()
+plt.plot(x,F,'ro',label='Messwerte')
+plt.plot(x2,y_lin,'c',label='Lin Approx')
+plt.plot(x2,y_quad,'b',label='Quad Approx')
+plt.xlabel('x')
+plt.hlines(y=y_35mm,xmin=0,xmax=5,label=f'Approx bei x=3.5mm -> y={y_35mm:8.3}')
+plt.ylabel('Federkennlinie')
+plt.grid()
+plt.legend(loc='lower right')
+plt.show()
 
 
 
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 1.0', '\n')
+
+# Definieren des Zeit- und Wegvektors für den Beschleunigungsvorgang:
+t1=np.array([0, 2, 4, 6, 8, 10])
+s1=np.array([0, 20, 80, 180, 320, 500])
+# Definieren des Zeit- und Wegvektors für den Bremsvorgang:
+t2=np.array([10, 20, 30, 40, 50, 60])
+s2=np.array([500, 1400, 2100, 2600, 2900, 3000])
+
+z1=np.arange(0,10.01, 0.01)
+z2=np.arange(10, 60.01, 0.01)
+
+# Polynom des Weges
+s1_p = np.polyfit(t1,s1,3)
+s2_p = np.polyfit(t2,s2,3)
+s1_y = np.polyval(s1_p,z1)
+s2_y = np.polyval(s2_p,z2)
+
+# Polynom der Geschwindigkeit
+v1_p = np.polyder(s1_p)
+v2_p = np.polyder(s2_p)
+v1_y = np.polyval(v1_p,z1)
+v2_y = np.polyval(v2_p,z2)
+
+# Polynom der Beschleunigung
+a1_p = np.polyder(v1_p)
+a2_p = np.polyder(v2_p)
+a1_y = np.polyval(a1_p,z1)
+a2_y = np.polyval(a2_p,z2)
+
+# Approximation an Zeitpunkten
+s_m = [5, 35, np.polyval(s1_p,5), np.polyval(s2_p,35)]
+
+# Plotten
+plt.figure()
+plt.subplot(311)
+plt.plot(z1, s1_y, 'g', label=r'$s_{ Beschleunigen}$')
+plt.plot(z2, s2_y, 'r', label=r'$s_{ Bremsen}$')
+plt.plot(s_m[0], s_m[2], 'bo', label=r'$s_{ 5s}$'+f' = {s_m[2]:8.3}')
+plt.vlines(s_m[0], ymin=0, ymax=s_m[2], color='b')
+plt.plot(s_m[1], s_m[3], 'bo', label=r'$s_{ 35s}$'+f' = {s_m[3]:8.3}')
+plt.vlines(s_m[1], ymin=0, ymax=s_m[3], color='b')
+plt.ylabel('Weg in [m]')
+plt.xlabel('Zeit in [s]')
+plt.legend(loc='best')
+plt.xlim([0,60])
+plt.ylim([0,3000])
+plt.grid()
+
+plt.subplot(312)
+plt.plot(z1, v1_y, 'g', label=r'$v_{ Beschleunigen}$')
+plt.plot(z2, v2_y, 'r', label=r'$v_{ Bremsen}$')
+plt.ylabel('Geschwindigkeit in [m/s]')
+plt.xlabel('Zeit in [s]')
+plt.legend(loc='best')
+plt.xlim([0,60])
+plt.ylim([0,100])
+plt.grid()
+
+plt.subplot(313)
+plt.plot(z1, a1_y, 'g', label=r'$a_{ Beschleunigen}$')
+plt.plot(z2, a2_y, 'r', label=r'$a_{ Bremsen}$')
+plt.ylabel('Beschleunigung in [m/s]')
+plt.xlabel('Zeit in [s]')
+plt.legend(loc='best')
+plt.xlim([0,60])
+plt.ylim([-5,11])
+plt.grid()
+plt.show()
 
 
 
-
-
-
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 2.0', '\n')
 
 
 
