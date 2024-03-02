@@ -55,7 +55,7 @@ def test_hole_detection():
     """
     Tests for detection of holes
     Vorlesungsvideo 9 - Zeit: 01:38:00
-    :return: Non
+    :return: None
     """
     hole_detection = HoleDetection(filename='../src_extern_data/holes.JPG', filepath='../test/data/')
     variable_type = type(hole_detection)
