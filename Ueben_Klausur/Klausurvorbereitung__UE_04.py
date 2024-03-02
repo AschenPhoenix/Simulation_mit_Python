@@ -39,7 +39,7 @@ os.system('cls')
 # |=======| Import aus anderer Dateien |=======|
 #                    region
 # |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-# import
+from class_hole import Hole
 # |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 #                   endregion
 
@@ -52,11 +52,13 @@ np.set_printoptions(suppress=True)
 print('\n\n\n', '\t\t\t Aufgabe a', '\n')
 
 def test_hole_detection():
-    hole_detection = HoleDetection(filename='holes.JPG', filepath='../test/data/')
+    """
+    Tests for detection of holes
+    Vorlesungsvideo 9 - Zeit: 01:38:00
+    :return: Non
+    """
+    hole_detection = HoleDetection(filename='../src_extern_data/holes.JPG', filepath='../test/data/')
     variable_type = type(hole_detection)
-
-
-
 
 
 

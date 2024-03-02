@@ -118,7 +118,7 @@ while wiederholen:
 
 #########################################################################################
 print('\n\n\n', '\t\t\t Aufgabe 10.0', '\n')
-filename = "MeineDaten.xlsx"
+filename = "../src_extern_data/MeineDaten.xlsx"
 file = opx.load_workbook(filename)
 data = file['Tabelle1']
 l = len(data['A'])
