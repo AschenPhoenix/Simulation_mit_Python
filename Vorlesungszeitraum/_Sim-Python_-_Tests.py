@@ -45,9 +45,6 @@ os.system('cls')
 mplt.use('Qt5Agg')
 np.set_printoptions(suppress=True)
 #########################################################################################
-a = [1,2,3,4,5,6,7,8,9,10]
-print(a)
-b = np.flip(a)
-print(b)
-print(type(b))
-print(b[2])
+a = [1,2,2,2,1,1,3,4,1]
+plt.hist(a, bins='auto')
+plt.show()
