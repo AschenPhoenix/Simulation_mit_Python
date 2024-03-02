@@ -48,6 +48,21 @@
                             # Die Lösung ist dann aber Fehlerbehaftet im Sinne der Methode der kleinsten Quadrate
                             # und stellt eine Annäherung der Lösung dar.
 
+    def dgl_pruefen(A,b):
+        try:
+            if np.linalg.det(A) != 0:
+                print("Das Gleichungssystem ist lösbar")
+                x = np.linalg.solve(A, b)
+                print(f"Die Lösung lautet:\n{x}\n")
+            else:
+                print("Das Gleichungssystem ist nicht lösbar")
+                x = np.linalg.lstsq(A, b, rcond=None)
+                print(f"Die Annäherungslösung lautet:\n{x[0]}\n")
+        except:
+            print("Das Gleichungssystem ist nicht lösbar")
+            x = np.linalg.lstsq(A, b, rcond=None)
+            print(f"Die Annäherungslösung lautet:\n{x[0]}\n")
+
 
 # ##################################################################################################################
 # Interpolieren
