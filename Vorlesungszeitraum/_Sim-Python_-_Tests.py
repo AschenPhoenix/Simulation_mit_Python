@@ -47,4 +47,20 @@ np.set_printoptions(suppress=True)
 #########################################################################################
 a = [1,2,2,2,1,1,3,4,1]
 plt.hist(a, bins='auto')
-plt.show()
+#plt.show()
+
+test = {'Para1':1,'Para2':2,'Para3':3}
+test2 = {'Para 1':1,'Para 2':2}
+print(test)
+print(test2)
+test.update(test2)
+print(test)
+#test4 = {'Para 1':1,'Para 2':2}
+#test4['Para 1'].update(test)
+#print(test4)
+print(np.polyfit([1,4],[1,2], 1))
+
+f=[]
+print(not f)
+f.append(1)
+print(not f)
