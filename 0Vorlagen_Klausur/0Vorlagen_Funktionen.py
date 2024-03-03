@@ -1,7 +1,34 @@
 # ##################################################################################################################
+# Erstellen eines Dictionarys
+    dic1 = {'Para_1': [1,2,3], 'Para_2': [4,5,6]}
+    # oder
+    dic2 = dict(Para_3=[1,2,3], Para_4=[4,5,6])
+# Erweitern eines Dictionarys
+    dic2['Para_5'] = [7,8,9]
+
+# Erstellen voon Dictionarys mit Unterkapiteln
+    dic3={}
+    dic3['Kapitel_1'] = {'Para_1':1,'Para_2':2}
+    dic3['Kapitel_2'] = {'Para_3':3,'Para_4':4}
+
+# Dictionarys zusammenfügen
+    dic4={}
+    dic4.update(dic1)
+    dic4.update(dic2)
+    # oder durch Neuerstellung
+    dic5 = dict(dic1, **dic2)
+
 # Ausgeben der daten eines Dictionarys auf schöne Weise
+    dictionary_name = dic1
     for key, value in dictionary_name.items():
         print(key, f":\t", value)
+
+    dictionary_name = dic5
+    for key1, value1 in dictionary_name.items():
+        print(key1.replace('\n', ''))
+        for key2, value2 in value1.items():
+            print(f" \t", key2, f":\t", value2)
+        print('  ')
 
 # ##################################################################################################################
 # plot mit zwei y-Achsen

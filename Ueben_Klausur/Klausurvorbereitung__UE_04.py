@@ -68,6 +68,10 @@ def test_hole_detection_a():
 print('\n\n\n', '\t\t\t Aufgabe b, d, e, f, g', '\n')
 class HoleDetection(Hole):
     def __init__(self, filename, filepath):
+        """
+        :param filename:
+        :param filepath:
+        """
         super().__init__()
         self._filepath = '../src_extern_data/'
         self._filename = None
