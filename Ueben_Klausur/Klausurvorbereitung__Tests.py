@@ -55,8 +55,17 @@ x = np.array([[1,2,3,4,5,6,7],[20,30,40,50,60,70,80]])
 print(x[0][:])
 print(x[:,2])
 
+rel = [22,23,24,25,26,27]
+for k, rd in enumerate(rel):
+    print(k, rd, rd-k)
 
-
+a=[]
+for i in range(10):
+    b = []
+    for j in range(20):
+        b.append(i*j)
+    a.append(b)
+print(a)
 
 
 

@@ -6,7 +6,7 @@
 # Erweitern eines Dictionarys
     dic2['Para_5'] = [7,8,9]
 
-# Erstellen voon Dictionarys mit Unterkapiteln
+# Erstellen von Dictionarys mit Unterkapiteln
     dic3={}
     dic3['Kapitel_1'] = {'Para_1':1,'Para_2':2}
     dic3['Kapitel_2'] = {'Para_3':3,'Para_4':4}
@@ -17,6 +17,12 @@
     dic4.update(dic2)
     # oder durch Neuerstellung
     dic5 = dict(dic1, **dic2)
+
+# Dictonary erweitern
+    dic6={}
+    dic6['Kapitel_2'] = dict(Para_3=[3],Para_4=[4])
+    dic6['Kapitel_2']['Para_3'].extend([10,11,12])
+    print(dic6)
 
 # Ausgeben der daten eines Dictionarys auf schöne Weise
     dictionary_name = dic1

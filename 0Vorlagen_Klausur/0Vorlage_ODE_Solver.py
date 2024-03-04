@@ -2,14 +2,14 @@
 # ODE-Funktion für einfache DGLs
 def ode_func(t, x, m, b, c):
     x1, x1p, x2, x2p, x3, x3p = x[0], x[1], x[2], x[3], x[4], x[5]
-    yp = [0, 0, 0, 0, 0, 0]
 
+    yp = np.zeros(len(x)).tolist()
     yp[0] = x1p
-    yp[1] = (-b*() - c*() + ('''Anregungskräfte''')) / m[0]
+    yp[1] = (-b * () - c * () + ('''Anregungskräfte''')) / m[0]
     yp[2] = x2p
-    yp[3] = (-b*() - c*() + ('''Anregungskräfte''')) / m[1]
+    yp[3] = (-b * () - c * () + ('''Anregungskräfte''')) / m[1]
     yp[4] = x3p
-    yp[5] = (-b*() - c*() + ('''Anregungskräfte''')) / m[2]
+    yp[5] = (-b * () - c * () + ('''Anregungskräfte''')) / m[2]
     return yp
 
 # =======================================================
