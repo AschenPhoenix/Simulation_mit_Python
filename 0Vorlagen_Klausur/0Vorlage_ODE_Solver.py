@@ -19,11 +19,11 @@ b = 0
 c = 0
 
 t = (0,20)
-ts = 0.1
+ts = 0.01
 
 anz_variablen = 3
 y0 = np.zeros(2*anz_variablen).tolist()
-sol = solve_ivp(ode_func, t, y0, method='RK45', max_step=ts, args=(m, b, c))
+sol = solve_ivp(ode_func, t, y0, method='RK45', max_step=ts, t_eval=np.linspace(0,20,200),  args=(m, b, c))
 
 plt.figure()
 for n in range(anz_variablen):
