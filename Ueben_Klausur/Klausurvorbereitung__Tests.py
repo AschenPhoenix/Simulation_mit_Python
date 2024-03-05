@@ -67,6 +67,14 @@ for i in range(10):
     a.append(b)
 print(a)
 
+c= [1,2,3,4,5,6,7,8,9,10]
+print(c[3:])
+print(np.transpose(c))
+
+print('\n\n\n')
+
+for t in np.arange(0,120,0.1):
+    if (t%100)>=50:print(t)
 
 
 

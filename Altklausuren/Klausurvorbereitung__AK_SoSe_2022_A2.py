@@ -50,60 +50,58 @@ np.set_printoptions(suppress=True)
 #plt.tight_layout(pad=0.5)
 
 #########################################################################################
-print('\n\n\n', '\t\t\t Aufgabe 2a', '\n')
+print('\n\n\n', '\t\t\t Aufgabe 2a)', '\n')
 
-def ode_func(t, x, f, L, U, R, C):
-    i, ip, = x[0], x[1]
+def ode_func(t, x, m, d, c, u=0):
+    x1, x1p, x2, x2p = x[0], x[1], x[2], x[3]
+
+    if t<=300: c3=10000
+    else: c3=0
+
+    if (t%100)>=50: u = 0.1
+
     yp = np.zeros(len(x)).tolist()
-    yp[0] = ip
-    yp[1] = 1/L * (2*np.pi*f*U*np.sin(2*np.pi*f*t) - R*ip - i/C)
+    yp[0] = x1p
+    yp[1] = -1/m[0] * ((d[0]+d[1])*x1p - d[1]*x2p + (c[0]+c[1]+c3)*x1 - (c[1]+c3)*x2) + c[0]/m[0]*u
+    yp[2] = x2p
+    yp[3] = -1/m[1] * (-d[1]*x1p + d[1]*x2p - (c[1]+c3)*x1 + (c[1]+c3)*x2)
+    
     return yp
 
-t = (0,0.3)
-f=10
-U=1
-R=1
-C=0.001
-L=0.01
+m=(1,0.01)
+d=(0.001,0.005)
+c1=10
+c2=c1*m[1]/m[0]
+c=(c1,c2)
+
+t=(0,600)
+ts = 0.01
+
+anz_variablen = 2
+y0 = np.zeros(2*anz_variablen).tolist()
+sol = solve_ivp(ode_func, t, y0, method='RK45', max_step=ts,  args=(m, d, c))
 
 plt.figure()
-for n in range(1):
-    y0 = (0, 0)
-    sol = solve_ivp(ode_func, t, y0, t_eval=np.linspace(0,0.3,121), method='RK45', args=(f, L, U, R, C))
-    plt.plot(sol.t, sol.y[n], label=f'I(f) bei f={f}HZ')
-# print(sol.t[80])
-plt.xlabel('Zeit in [s]')
-plt.ylabel('Strom I in [A]')
+plt.tight_layout(pad=0.5)
+
+plt.subplot(211)
+plt.plot(sol.t, sol.y[0], label=f'$x_{1}(t)$')
+plt.xlabel('Zeit')
+plt.ylabel(f'Auslenkung $x_1$')
+plt.legend(loc='best')
+plt.grid()
+
+plt.subplot(212)
+plt.plot(sol.t, sol.y[2], label=f'$x_{2}(t)$')
+plt.xlabel('Zeit')
+plt.ylabel(f'Auslenkung $x_2$')
 plt.legend(loc='best')
 plt.grid()
 plt.show()
 
 
-#########################################################################################
-print('\n\n\n', '\t\t\t Aufgabe 2b', '\n')
-t = (0,0.3)
-para = (1, 1, 0.001, 0.01)
-U=1
-R=1
-C=0.001
-L=0.01
 
-plt.figure()
-Z = []
-invZ = []
-f_span = np.logspace(np.log10(10),np.log10(100),1000)
-for f in f_span:
-    y0 = (0, 0)
-    sol = solve_ivp(ode_func, t, y0,t_eval=np.linspace(0.2,0.3), args=(f, L, U, R, C))
-    z = (2*U)/(max(sol.y[0])-min(sol.y[0]))
-    Z.append(z)
-    invZ.append(z**(-1))
 
-plt.plot(f_span, invZ)
-plt.xlabel('Impedanz Z')
-plt.ylabel('Frequenz f')
-plt.grid()
-plt.show()
 
 
 

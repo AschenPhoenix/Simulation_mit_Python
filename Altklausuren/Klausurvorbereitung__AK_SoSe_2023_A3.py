@@ -53,16 +53,11 @@ np.set_printoptions(suppress=True)
 print('\n\n\n', '\t\t\t Aufgabe 3', '\n')
 
 class Beam:
-    def __init__(self, modulus, inertia, length, load, z_max=0.0):
+    def __init__(self, modulus, inertia, length, load, z_max):
         """
         Initialise the Beamclass
         :param: modulus  E, inertia I, length l, z_max, load q
         """
-        self._modulus = 0.0
-        self._inertia = 0.0
-        self._length = 0.0
-        self._z_max = 0.0
-        self._load = 0.0
 
         self._modulus = modulus
         self._inertia = inertia
@@ -106,7 +101,6 @@ class Beam:
         :return:
         """
         w_max = self._load*self._length**4/(8*self._modulus*self._inertia)
-        self._z_max = w_max
         return w_max
 
 
@@ -122,7 +116,7 @@ def inertia_i_beam(b, t, h, a):
     I = 1/12 * (b*h**3 - (b-t)*(h-2*a)**3)
     return I
 
-E=90
+E=90e9
 l=80
 q=1500
 b=0.3
@@ -132,9 +126,11 @@ a=0.05
 
 I = inertia_i_beam(b, t, h, a)
 
-I_Profil = Beam(modulus=E,inertia=I, length=l, load=q)
+I_Profil = Beam(modulus=E,inertia=I, length=l, load=q, z_max=(h/2))
 print(f'Die maximale Durchbiegung des Balkens ist:\t w_max\t\t={I_Profil.w_max:10.3}')
-print(f'Die maximale Spannung des Balkens ist:\t\t sigma_max\t={I_Profil.sigma_max:10.3}')
+print(f'Die maximale Spannung des Balkens ist:\t\t sigma_max\t={I_Profil.sigma_max:10.3}\n')
+print(f'Die maximale Durchbiegung des Balkens ist:\t w_max\t\t={I_Profil.w_max}')
+print(f'Die maximale Spannung des Balkens ist:\t\t sigma_max\t={I_Profil.sigma_max}')
 
 
 
