@@ -1,0 +1,2 @@
+Optimaler Parameter a: ;5.173089474996602
+Optimaler Parameter b: ;13.096299183137322

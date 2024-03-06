@@ -50,7 +50,7 @@ np.set_printoptions(suppress=True)
 #plt.tight_layout(pad=0.5)
 
 #########################################################################################
-print('\n\n\n', '\t\t\t Aufgabe 0.0', '\n')
+print('\n\n\n', '\t\t\t Aufgabe 1a', '\n')
 
 path = r'../Altklausuren/SS2021/federkennlinie_klausur.csv'
 csv_weg = []
@@ -68,8 +68,30 @@ plt.grid()
 plt.show()
 
 
+#########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 1b', '\n')
+from scipy.optimize import curve_fit
+def kennlinie(x, a=1, b=1):
+    return (x/a * np.abs(np.tanh(x/b)))
 
+kenn_opt = curve_fit(kennlinie, csv_weg, csv_kraft, p0=[1,1])[0]
+print(kenn_opt)
+x=np.linspace(-10,10,1000)
+curve_opt = kennlinie(x, kenn_opt[0], kenn_opt[1])
+plt.figure()
+plt.plot(csv_weg, csv_kraft, 'gx', label='Messwerte')
+plt.plot(x, curve_opt, 'k--', label='optimierte Lösung')
+plt.text(-10,1, f'a = {kenn_opt[0]:8.5}\nb = {kenn_opt[1]:8.5}')
+plt.xlabel('Weg')
+plt.ylabel('Kraft')
+plt.legend(loc='lower right')
+plt.grid()
+plt.show()
 
+data = open(r'../Altklausuren/SS2021/federkennlinie_optimierte_parameter.txt','w')
+data.write(f'Optimaler Parameter a: ;{kenn_opt[0]}\n')
+data.write(f'Optimaler Parameter b: ;{kenn_opt[1]}\n')
+data.close()
 
 
 
