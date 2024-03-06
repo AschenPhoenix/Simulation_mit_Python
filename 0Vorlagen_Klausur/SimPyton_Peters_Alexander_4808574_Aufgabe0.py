@@ -6,10 +6,6 @@
 #                           Alexander Peter,  MatNr.: 4808574                           #
 #                                                                                       #
 #########################################################################################
-# |==============| Bibliotheken |==============|
-#                     region
-# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-
 # |~~~~~~~~~~~~| Main Bibliotheken |~~~~~~~~~~~|
 import numpy as np
 import math as mth
@@ -36,19 +32,6 @@ from scipy.integrate import solve_ivp
 import scipy.integrate as s_int
 import scipy.optimize as opt
 # import opencv as cv2
-
-# |~~~~~~~~~~| Terminal vorbereiten |~~~~~~~~~~|
-os.system('cls')
-# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-#                   endregion
-
-# |=======| Import aus anderer Dateien |=======|
-#                    region
-# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-# import
-# |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-#                   endregion
-
 # |=======| Darstellungseinstellungen |========|
 mplt.use('Qt5Agg')
 np.set_printoptions(suppress=True)
