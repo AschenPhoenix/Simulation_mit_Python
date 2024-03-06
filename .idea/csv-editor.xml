@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\Altklausuren\SS2021\federkennlinie_klausur.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Altklausuren\SS2023\od_deaths_usa.csv">
           <value>
             <Attribute>

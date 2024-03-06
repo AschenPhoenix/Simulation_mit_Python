@@ -36,3 +36,21 @@ plt.show()
 
 
 # ##################################################################################################################
+
+from scipy.optimize import curve_fit
+def vorhersage_a1(x, a=1, b=2000):
+    return np.exp(a*(x-b))
+
+popt_total = curve_fit(vorhersage_a1, year, total, p0=[1,2000])[0]
+popt_fentanyl = curve_fit(vorhersage_a1, year, fentanyl, p0=[1,2000])[0]
+
+# ##################################################################################################################
+
+def tl_ratio(x,rd):
+    return (3*x - 4*x**3 - rd)
+
+rd = 0.05
+l = 22.5
+x0 = 0.1
+x = scipy.optimize.newton(tl_ratio, x0, args=(rd,))
+print(f'Wandstärke ist t={x*l}')

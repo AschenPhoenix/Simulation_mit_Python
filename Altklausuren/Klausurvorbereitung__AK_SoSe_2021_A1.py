@@ -23,6 +23,7 @@ import _thread as thread
 import time
 import random
 import openpyxl as opx
+from openpyxl import Workbook
 from copy import copy
 from sympy import true
 from scipy.interpolate import interp1d
@@ -49,39 +50,28 @@ np.set_printoptions(suppress=True)
 #plt.tight_layout(pad=0.5)
 
 #########################################################################################
+print('\n\n\n', '\t\t\t Aufgabe 0.0', '\n')
+
+path = r'../Altklausuren/SS2021/federkennlinie_klausur.csv'
+csv_weg = []
+csv_kraft = []
+with open(path) as csv_data:
+    csv_read = csv.reader(csv_data, delimiter=' ')
+    for row in csv_read:
+        csv_weg.append(float(row[0]))
+        csv_kraft.append(float(row[1]))
+csv_data.close()
+
+plt.figure()
+plt.plot(csv_weg, csv_kraft, 'gx')
+plt.grid()
+plt.show()
 
 
-x = np.array([[1,2,3,4,5,6,7],[20,30,40,50,60,70,80]])
-print(x[0][:])
-print(x[:,2])
 
-rel = [22,23,24,25,26,27]
-for k, rd in enumerate(rel):
-    print(k, rd, rd-k)
 
-a=[]
-for i in range(10):
-    b = []
-    for j in range(20):
-        b.append(i*j)
-    a.append(b)
-print(a)
 
-c= [1,2,3,4,5,6,7,8,9,10]
-print(c[3:])
-print(np.transpose(c))
 
-print('\n\n\n')
-
-for t in np.arange(0,120,0.1):
-    if (t%100)>=50:print(t)
-
-c= np.linspace(0,10)
-a: np.ndarray = c
-print(type(a),a)
-
-I : float = 0
-print(I)
 
 
 
